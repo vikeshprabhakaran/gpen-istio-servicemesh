@@ -1,0 +1,14 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: bookinfo-gateway-viewer
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      gateway.networking.k8s.io/gateway-name: bookinfo-gateway
+  action: ALLOW
+  rules:
+  - to:
+    - operation:
+        methods: ["GET"]
